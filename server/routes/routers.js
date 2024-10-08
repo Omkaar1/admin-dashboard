@@ -71,6 +71,19 @@ router.post("/register", async (req, res) => {
   }
 });
 
+// GET /api/users/count endpoint to get total user count
+router.get("/users/count", async (req, res) => {
+  try {
+    // Use the correct Mongoose method `countDocuments()`
+    const userCount = await users.countDocuments();
+    console.log(userCount); // For debugging (you can remove it in production)
+    res.status(200).json({ totalUsers: userCount });
+  } catch (err) {
+    console.error("Error fetching user count:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
 /* get user data */
 router.get("/getdata", async (req, res) => {
   try {

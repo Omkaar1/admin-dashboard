@@ -1,17 +1,54 @@
 import React from 'react';
 import CardDataStats from '../../components/CardDataStats';
 import ChartOne from '../../components/Charts/ChartOne';
-import ChartThree from '../../components/Charts/ChartThree';
+// import ChartThree from '../../components/Charts/ChartThree';
 import ChartTwo from '../../components/Charts/ChartTwo';
 import ChatCard from '../../components/Chat/ChatCard';
-import MapOne from '../../components/Maps/MapOne';
+// import MapOne from '../../components/Maps/MapOne';
 import TableOne from '../../components/Tables/TableOne';
-
+import { useState, useEffect } from 'react';
 const ECommerce: React.FC = () => {
+  // Define state types
+  const [userCount, setUserCount] = useState<number | null>(null); // userCount is either a number or null
+  const [loading, setLoading] = useState<boolean>(true); // loading is a boolean
+  const [error, setError] = useState<string | null>(null); // error is either a string or null
+
+  useEffect(() => {
+    // Function to fetch the total user count from the backend
+    const fetchUserCount = async (): Promise<void> => {
+      try {
+        const response = await fetch('http://localhost:8080/users/count'); // API endpoint
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch user count');
+        }
+
+        const data = await response.json();
+        setUserCount(data.totalUsers);
+        setLoading(false); // Set loading to false when data is fetched
+      } catch (error) {
+        if (error instanceof Error) {
+          setError(error.message); // Handle error if fetch fails
+        }
+        setLoading(false);
+      }
+    };
+
+    fetchUserCount(); // Call the function to fetch user count on component mount
+  }, []); // Empty dependency array to run this effect only once (on mount)
+
+  // Render loading, error, or user count based on state
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
   return (
     <>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5">
-        <CardDataStats title="Total views" total="$3.456K" rate="0.43%" levelUp>
+        <CardDataStats title="Total views" total="0" rate="0%" levelUp>
           <svg
             className="fill-primary dark:fill-white"
             width="22"
@@ -30,7 +67,7 @@ const ECommerce: React.FC = () => {
             />
           </svg>
         </CardDataStats>
-        <CardDataStats title="Total Profit" total="$45,2K" rate="4.35%" levelUp>
+        <CardDataStats title="Your Product" total="0" rate="0%" levelUp>
           <svg
             className="fill-primary dark:fill-white"
             width="20"
@@ -53,7 +90,7 @@ const ECommerce: React.FC = () => {
             />
           </svg>
         </CardDataStats>
-        <CardDataStats title="Total Product" total="2.450" rate="2.59%" levelUp>
+        <CardDataStats title="Total Product" total="0" rate="0%" levelUp>
           <svg
             className="fill-primary dark:fill-white"
             width="22"
@@ -72,7 +109,12 @@ const ECommerce: React.FC = () => {
             />
           </svg>
         </CardDataStats>
-        <CardDataStats title="Total Users" total="3.456" rate="0.95%" levelDown>
+        <CardDataStats
+          title="Total Users"
+          total={userCount ? userCount.toString() : '0'}
+          rate="0%"
+          levelDown
+        >
           <svg
             className="fill-primary dark:fill-white"
             width="22"
@@ -100,8 +142,8 @@ const ECommerce: React.FC = () => {
       <div className="mt-4 grid grid-cols-12 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
         <ChartOne />
         <ChartTwo />
-        <ChartThree />
-        <MapOne />
+        {/* <ChartThree /> */}
+        {/* <MapOne /> */}
         <div className="col-span-12 xl:col-span-8">
           <TableOne />
         </div>
