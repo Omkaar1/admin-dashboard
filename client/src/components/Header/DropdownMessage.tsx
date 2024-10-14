@@ -78,7 +78,7 @@ const DropdownMessage = () => {
 
                   <div>
                     <h6 className="text-sm font-medium text-black dark:text-white">
-                      Mariya Desoja
+                      Snehal Kumbhar
                     </h6>
                     <p className="text-sm">I like your confidence 💪</p>
                     <p className="text-xs">2min ago</p>
@@ -96,7 +96,7 @@ const DropdownMessage = () => {
 
                   <div>
                     <h6 className="text-sm font-medium text-black dark:text-white">
-                      Robert Jhon
+                      Ishwar Khambyat
                     </h6>
                     <p className="text-sm">Can you share your offer?</p>
                     <p className="text-xs">10min ago</p>
@@ -114,7 +114,7 @@ const DropdownMessage = () => {
 
                   <div>
                     <h6 className="text-sm font-medium text-black dark:text-white">
-                      Henry Dholi
+                      Purusottam Pattnaik
                     </h6>
                     <p className="text-sm">I cam across your profile and...</p>
                     <p className="text-xs">1day ago</p>
@@ -132,7 +132,7 @@ const DropdownMessage = () => {
 
                   <div>
                     <h6 className="text-sm font-medium text-black dark:text-white">
-                      Cody Fisher
+                      Swati Badgujar
                     </h6>
                     <p className="text-sm">I’m waiting for you response!</p>
                     <p className="text-xs">5days ago</p>
@@ -150,7 +150,7 @@ const DropdownMessage = () => {
 
                   <div>
                     <h6 className="text-sm font-medium text-black dark:text-white">
-                      Mariya Desoja
+                      Suvarna shinde
                     </h6>
                     <p className="text-sm">I like your confidence 💪</p>
                     <p className="text-xs">2min ago</p>

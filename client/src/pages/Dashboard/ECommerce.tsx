@@ -5,8 +5,8 @@ import ChartOne from '../../components/Charts/ChartOne';
 import ChartTwo from '../../components/Charts/ChartTwo';
 import ChatCard from '../../components/Chat/ChatCard';
 // import MapOne from '../../components/Maps/MapOne';
-import TableOne from '../../components/Tables/TableOne';
 import { useState, useEffect } from 'react';
+import TableUser from '../../components/Tables/TableUser';
 const ECommerce: React.FC = () => {
   // Define state types
   const [userCount, setUserCount] = useState<number | null>(null); // userCount is either a number or null
@@ -145,7 +145,7 @@ const ECommerce: React.FC = () => {
         {/* <ChartThree /> */}
         {/* <MapOne /> */}
         <div className="col-span-12 xl:col-span-8">
-          <TableOne />
+          <TableUser />
         </div>
         <ChatCard />
       </div>
